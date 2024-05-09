@@ -1,0 +1,76 @@
+-----------Score------------
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Score : MonoBehaviour
+{
+    static public int myScore;
+    void Update()
+    {
+        GetComponent<Text>().text = "Score : " + myScore;
+    }//Update
+
+}//score
+------------------------------
+----------Coin----------------
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Coin : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Car")
+        {
+            Score.myScore += 1;
+            
+            Destroy(gameObject);
+        }
+    }//OnTriggerEnter
+
+     
+}//Coin
+--------------------------------
+-----------Gomenu---------------
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GoMenu : MonoBehaviour
+{
+    public void MenuScene()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+}//GoMenu
+---------------------------------
+----------CrossScene-------------
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class CrossScene : MonoBehaviour
+{
+    public void GamePlayScene()
+    {
+        SceneManager.LoadScene("GamePlay");
+    }
+
+    public void CreditsScene()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void MenuScene()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+}//CrossScene
+---------------------------------------------
+----------------END-------------------------
